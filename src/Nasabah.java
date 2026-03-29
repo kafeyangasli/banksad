@@ -9,7 +9,14 @@ public class Nasabah {
     private List<Rekening> daftarRekening;
 
     //konstrukto
-    public Nasabah (String idNasabah, String nama){
+    public Nasabah(String idNasabah, String nama) {
+        if (idNasabah == null || idNasabah.isEmpty()) {
+            throw new IllegalArgumentException("ID Nasabah tidak boleh kosong");
+        }
+        if (nama == null || nama.isEmpty()) {
+            throw new IllegalArgumentException("Nama tidak boleh kosong");
+        }
+
         this.idNasabah = idNasabah;
         this.nama = nama;
         this.daftarRekening = new ArrayList<>();
@@ -24,7 +31,10 @@ public class Nasabah {
         return nama;
     }
 
-    public void setNama(String nama){
+    public void setNama(String nama) {
+        if (nama == null || nama.isEmpty()) {
+            throw new IllegalArgumentException("Nama tidak boleh kosong");
+        }
         this.nama = nama;
     }
 
@@ -47,10 +57,18 @@ public class Nasabah {
         return total;
     }
 
-    public void tambahRekening(Rekening r){
+    public void tambahRekening(Rekening r) {
+        if (r == null) {
+            throw new IllegalArgumentException("Rekening tidak boleh null");
+        }
         daftarRekening.add(r);
     }
-    public void hapusRekening(Rekening r){
-        daftarRekening.remove(r);
+    public void hapusRekening(Rekening r) {
+        if (r == null) {
+            throw new IllegalArgumentException("Rekening tidak boleh null");
+        }
+        if (!daftarRekening.remove(r)) {
+            throw new IllegalArgumentException("Rekening tidak ditemukan");
+        }
     }
 }
