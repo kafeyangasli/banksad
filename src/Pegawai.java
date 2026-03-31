@@ -5,11 +5,11 @@ import java.time.format.DateTimeFormatter;
 public abstract class Pegawai {
 
     /*---------- Atribut ----------*/
-    protected String nip;
-    protected String nama;
-    protected LocalDate tglLahir;
-    protected LocalDate tmt;
-    protected double gajiPokok;
+    private String nip;
+    private String nama;
+    private LocalDate tglLahir;
+    private LocalDate tmt;
+    private double gajiPokok;
     private static int counterPegawai = 0;
 
     /*---------- Method -----------*/

@@ -33,7 +33,7 @@ public class Transaksi {
             throw new Exception("Jenis Transaksi tidak valid!");
         }
 
-        this.idTransaksi = "TID-BNQ-" + ++counterTransaksi;
+        this.idTransaksi = "TID-BNQ-" + ++counterTransaksi + "-" + LocalDate.now().format(DateTimeFormatter.ofPattern("ddMMYYYY"));
         this.nominal = nominal;
         this.tanggal = LocalDate.now();
         this.jenis = jenis.toUpperCase();

@@ -44,7 +44,7 @@ public class PegawaiKontrak extends Pegawai {
     // public function hitungTunjangan() -> double
     // Mengembalikan besaran tunjangan yang diterima oleh pegawai kontrak
     public double hitungTunjangan() {
-        return 0.1 * gajiPokok;
+        return 0.1 * this.getGajiPokok();
     }
 
     // public function hitungPensiun() -> LocalDate

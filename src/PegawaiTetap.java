@@ -33,13 +33,13 @@ public class PegawaiTetap extends Pegawai {
     // public function hitungPensiun() -> LocalDate
     // Mengembalikan tanggal pensiun pegawai tetap
     public LocalDate hitungPensiun() {
-        return tglLahir.plusYears(BUP);
+        return this.getTglLahir().plusYears(BUP);
     }
 
     // public function hitungTunjangan() -> double
     // Mengembalikan besaran tunjangan yang diterima oleh pegawai tetap
     public double hitungTunjangan() {
-        return 0.2 * gajiPokok;
+        return 0.2 * this.getGajiPokok();
     }
     
     // public procedure printInfo()
