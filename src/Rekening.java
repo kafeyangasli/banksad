@@ -4,7 +4,7 @@ public class Rekening {
     private String noRekening;
     private double saldo;
     private Nasabah pemilik;
-    private static int counterRekening;
+    private static int counterRekening = 0;
 
     /*---------- Method -----------*/
 
@@ -13,9 +13,9 @@ public class Rekening {
         this.noRekening = noRekening;
         this.saldo = saldo;
         this.pemilik = pemilik;
+        pemilik.tambahRekening(this);
         counterRekening++;
     }
-
 
     // Selektor Nomor Rekening
     public String getNoRekening() {
@@ -57,7 +57,8 @@ public class Rekening {
     // Mencetak current state objek Rekening
     public void printRekening() {
         System.out.println("No Rekening\t: " + noRekening);
-        System.out.println("Saldo\t: " + saldo);
-        System.out.println("Pemilik\t: " + pemilik.getNama());
+        System.out.println("Saldo\t\t: " + saldo);
+        System.out.println("Pemilik\t\t: " + pemilik.getNama());
+        System.out.println(); // New Line
     }
 }

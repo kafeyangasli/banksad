@@ -52,5 +52,6 @@ public class PegawaiTetap extends Pegawai {
         System.out.println("Jabatan\t\t: " + jabatan);
         System.out.println("Tanggal Pensiun\t: " + hitungPensiun().format(format));
         System.out.println("Tunjangan\t: " + hitungTunjangan());
+        System.out.println(); // New Line
     }
 }

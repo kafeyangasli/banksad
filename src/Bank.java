@@ -68,7 +68,7 @@ public class Bank {
     }
     // Selektor Banyaknya Nasabah Bank
     public int getJumlahPegawai() {
-        return daftarNasabah.size();
+        return daftarPegawai.size();
     }
     // Method menambahkan Pegawai
     public void tambahPegawai (Pegawai p) {

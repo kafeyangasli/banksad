@@ -58,10 +58,11 @@ public class PegawaiKontrak extends Pegawai {
     @Override
     public void printInfo() {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("d MMMM yyyy");
-        
+
         super.printInfo();
         System.out.println("Jenis Pekerjaan\t: " + jenisPekerjaan);
         System.out.println("Akhir Kontrak\t: " + akhirKontrak.format(format));
-        System.out.println("Tunjangan\t\t: " + hitungTunjangan());
+        System.out.println("Tunjangan\t: " + hitungTunjangan());
+        System.out.println(); // New Line
     }
 }

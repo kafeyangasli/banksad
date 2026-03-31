@@ -56,12 +56,22 @@ public class Nasabah {
         return total;
     }
 
-    // Mutator Tambah Rekening ke Daftar Rekening
+    // Mutator Tambah Rekening ke Daftar Rekening Nasabah
     public void tambahRekening(Rekening r){
         daftarRekening.add(r);
     }
-    // Mutator Hapus Rekening dari Daftar Rekening
+    // Mutator Hapus Rekening dari Daftar Rekening Nasabah
     public void hapusRekening(Rekening r){
         daftarRekening.remove(r);
+    }
+
+    // public procedure printNasabah()
+    // Mencetak current state objek Nasabah
+    public void printNasabah() {
+        System.out.println("ID Nasabah\t: " + idNasabah);
+        System.out.println("Nama\t\t: " + nama);
+        System.out.println("Total Rekening\t: " + getJumlahRekening());
+        System.out.println("Saldo Total\t: " + getTotalSaldo());
+        System.out.println(); // New Line
     }
 }

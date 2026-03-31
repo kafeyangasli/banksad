@@ -7,17 +7,16 @@ public class Kartu {
     private String jenis;
     private Rekening rekening;
     private LocalDate masaBerlaku;
-    private static int counterKartu;
+    private static int counterKartu = 0;
 
     /*---------- Method -----------*/
 
     // Konstruktor berparameter
-    public Kartu(String noKartu, String jenis, Rekening rekening) {
-        this.noKartu = noKartu;
+    public Kartu(String jenis, Rekening rekening) {
+        this.noKartu = "CID-BNQ-" + ++counterKartu;
         this.jenis = jenis;
         this.masaBerlaku = LocalDate.now().plusYears(5); // Masa berlaku 5 tahun
         this.rekening = rekening;
-        counterKartu++;
     }
 
     // Selektor Nomor Kartu
@@ -52,6 +51,10 @@ public class Kartu {
     public LocalDate getMasaBerlakuKartu() {
         return masaBerlaku;
     }
+    // Selektor Status Keaktifan Kartu
+    public boolean isAktif() {
+        return LocalDate.now().isBefore(masaBerlaku);
+    }
     // Method untuk memperpanjang masa berlaku
     public void perpanjangMasaBerlaku() {
         this.masaBerlaku = LocalDate.now().plusYears(5);
@@ -61,10 +64,13 @@ public class Kartu {
     public void tarikTunai(double jumlah) throws Exception {
         assert rekening != null : "Rekening kok null...";
 
-        if (LocalDate.now().isAfter(masaBerlaku)) throw new Exception("Kartu sudah melewati masa berlaku!");
+        if (!this.isAktif()) throw new Exception("Kartu sudah melewati masa berlaku!");
 
         try {
-            rekening.tarik(jumlah);
+            Transaksi T = new Transaksi("tarik", jumlah, rekening);
+
+            T.proses();
+            T.printTransaksi();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -73,8 +79,9 @@ public class Kartu {
     // public procedure printKartu()
     // Mencetak current state objek Kartu
     public void printKartu(){
-        System.out.println("No Kartu\t\t: " + noKartu);
+        System.out.println("No Kartu\t: " + noKartu);
         System.out.println("Jenis\t\t: " + jenis);
-        System.out.println("Rekening Terhubung\t: " + rekening.getNoRekening());
+        System.out.println("Rek. Terhubung\t: " + rekening.getNoRekening());
+        System.out.println(); // New Line
     }
 }

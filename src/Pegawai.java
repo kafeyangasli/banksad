@@ -15,7 +15,7 @@ public abstract class Pegawai {
     /*---------- Method -----------*/
 
     // Konstruktor tanpa parameter
-    public Pegawai() {
+    protected Pegawai() {
         this.nip = "";
         this.nama = "";
         this.tglLahir = LocalDate.now();
@@ -25,7 +25,7 @@ public abstract class Pegawai {
     }
 
     // Konstruktor berparameter
-    public Pegawai(String nip, String nama, LocalDate tglLahir, LocalDate tmt, double gajiPokok) {
+    protected Pegawai(String nip, String nama, LocalDate tglLahir, LocalDate tmt, double gajiPokok) {
         this.nip = nip;
         this.nama = nama;
         this.tglLahir = tglLahir;
@@ -99,8 +99,8 @@ public abstract class Pegawai {
         System.out.println("NIP\t\t: " + nip);
         System.out.println("Nama\t\t: " + nama);
         System.out.println("Tanggal Lahir\t: " + tglLahir.format(format));
-        System.out.println("TMT\t: " + tmt.format(format));
-        System.out.println("Umur\t: " + getUmur() + " tahun");
+        System.out.println("TMT\t\t: " + tmt.format(format));
+        System.out.println("Umur\t\t: " + getUmur() + " tahun");
         System.out.println("Masa Kerja\t: " + hitungMasaKerja());
         System.out.println("Gaji Pokok\t: " + gajiPokok);
     }
