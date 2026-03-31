@@ -1,64 +1,60 @@
 public class Kartu {
-    /*Atribut */
+
+    /*---------- Atribut ----------*/
     private String noKartu;
     private String jenis;
     private Rekening rekening;
     private static int counterKartu;
 
-    /*Konstruktor */
+    /*---------- Method -----------*/
 
     // Konstruktor tanpa parameter
-    public Kartu(){
+    public Kartu() {
         noKartu = "";
         jenis = "";
         rekening = null;
         counterKartu++;
     }
 
-    //Konstruktor dengan parameter
-    public Kartu(String noKartu, String jenis, Rekening rekening){
+    // Konstruktor berparameter
+    public Kartu(String noKartu, String jenis, Rekening rekening) {
         this.noKartu = noKartu;
         this.jenis = jenis;
         this.rekening = rekening;
         counterKartu++;
     }
 
-    /*Selektor */
-
-    public String getNoKartu(){
+    // Selektor Nomor Kartu
+    public String getNoKartu() {
         return noKartu;
     }
 
-    public String getJenis(){
+    // Selektor Jenis Kartu
+    public String getJenis() {
         return jenis;
     }
-
-    public Rekening getRekening(){
-        return rekening;
+    // Mutator Jenis Kartu
+    public void setJenis(String jenis) {
+        this.jenis = jenis;
     }
 
+    // Selektor Rekening yang Terhubung
+    public Rekening getRekening() {
+        return rekening;
+    }
+    // Mutator Rekening yang Terhubung
+    public void setRekening(Rekening rekening) {
+        this.rekening = rekening;
+    }
+
+    // Selektor Banyaknya Kartu yang Terbuat
     public static int getCounterKartu(){
         return counterKartu;
     }
 
-    /*Mutator */
-    public void setNoKartu(String noKartu){
-        this.noKartu = noKartu;
-    }
-
-    public void setJenis(String jenis){
-        this.jenis = jenis;
-    }
-
-    public void setRekening(Rekening rekening){
-        this.rekening = rekening;
-    }
-
-    /*Method Tambahan */
-
     // Method untuk cek saldo
-    public void cekSaldo(){
-        if(rekening != null){
+    public void cekSaldo() {
+        if (rekening != null) {
             System.out.println("Saldo : " + rekening.getSaldo());
         } else {
             System.out.println("Saldo : 0");
@@ -66,7 +62,7 @@ public class Kartu {
     }
 
     // Method untuk tarik tunai via kartu
-    public void tarikTunai(double jumlah){
+    public void tarikTunai(double jumlah) {
         if(rekening != null){
             rekening.tarik(jumlah);
         } else {

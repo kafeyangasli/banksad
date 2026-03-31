@@ -1,19 +1,15 @@
-public abstract class Transaksi {
-    /*Atribut */
+public class Transaksi {
+
+    /*---------- Atribut ----------*/
+    protected String idTransaksi;
     protected double nominal;
     protected String tanggal;
     protected Rekening rekening;
     private static int counterTransaksi;
 
-    /*Konstruktor */
+    /*---------- Method -----------*/
 
-    public Transaksi(){
-        nominal = 0;
-        tanggal = "";
-        rekening = null;
-        counterTransaksi++;
-    }
-
+    // Konstruktor
     public Transaksi(double nominal, String tanggal, Rekening rekening){
         this.nominal = nominal;
         this.tanggal = tanggal;
@@ -21,12 +17,11 @@ public abstract class Transaksi {
         counterTransaksi++;
     }
 
-    /*Selektor */
-
+    // Selektor Nominal
     public double getNominal(){
         return nominal;
     }
-
+    // Selektor Tanggal Transaksi
     public String getTanggal(){
         return tanggal;
     }

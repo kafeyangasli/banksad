@@ -1,40 +1,48 @@
-import java.time.*;
+import java.time.LocalDate;
 
 public class PegawaiTetap extends Pegawai {
 
-    /****** ATRIBUT ******/
+    /*---------- Atribut ----------*/
     private String jabatan;
     private static final int BUP = 55;
 
-    /****** METHOD ******/
+    /*---------- Method -----------*/
+
+    // Konstruktor tanpa parameter
     public PegawaiTetap() {
         super();
         this.jabatan = "";
     }
 
+    // Konstruktor berparameter
     public PegawaiTetap(String nip, String nama, LocalDate tglLahir, LocalDate tmt, double gajiPokok, String jabatan) {
         super(nip, nama, tglLahir, tmt, gajiPokok);
         this.jabatan = jabatan;
     }
 
+    // Selektor Jabatan
     public String getJabatan() {
         return jabatan;
     }
-
+    // Mutator Jabatan
     public void setJabatan(String jabatan) {
         this.jabatan = jabatan;
     }
 
-    @Override
+    // public function hitungPensiun() -> LocalDate
+    // Mengembalikan tanggal pensiun pegawai tetap
     public LocalDate hitungPensiun() {
         return tglLahir.plusYears(BUP);
     }
 
-    @Override
+    // public function hitungTunjangan() -> double
+    // Mengembalikan besaran tunjangan yang diterima oleh pegawai tetap
     public double hitungTunjangan() {
         return 0.2 * gajiPokok;
     }
-
+    
+    // public procedure printInfo()
+    // Mencetak current state objek Pegawai Tetap
     @Override
     public void printInfo() {
         super.printInfo();

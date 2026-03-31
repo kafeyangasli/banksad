@@ -1,85 +1,78 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Rekening {
-    /*Atribut */
+
+    /*---------- Atribut ----------*/
     private String noRekening;
     private double saldo;
     private Nasabah pemilik;
+    private List<Kartu> daftarKartu;
     private static int counterRekening;
 
-    /*Konstruktor */
+    /*---------- Method -----------*/
 
-    // Konstruktor tanpa parameter
-    public Rekening(){
-        noRekening = "";
-        saldo = 0;
-        pemilik = null;
-        counterRekening++;
-    }
-
-    // Konstruktor dengan parameter
-    public Rekening(String noRekening, double saldo, Nasabah pemilik){
+    // Konstruktor
+    public Rekening(String noRekening, double saldo, Nasabah pemilik) {
         this.noRekening = noRekening;
         this.saldo = saldo;
         this.pemilik = pemilik;
+        daftarKartu = new ArrayList<Kartu>();
         counterRekening++;
     }
 
-    /*Selektor */
 
-    public String getNoRekening(){
+    // Selektor Nomor Rekening
+    public String getNoRekening() {
         return noRekening;
     }
 
-    public double getSaldo(){
+    // Selektor Saldo
+    public double getSaldo() {
         return saldo;
     }
 
-    public Nasabah getPemilik(){
+    // Selektor Pemilik Rekening
+    public Nasabah getPemilik() {
         return pemilik;
     }
 
-    public static int getCounterRekening(){
+    // Selektor banyaknya Rekening yang ada di Bank
+    public static int getCounterRekening() {
         return counterRekening;
     }
 
-    /*Mutator */
-    public void setNoRekening(String noRekening){
-        this.noRekening = noRekening;
+    // Mutator Tambah Kartu ke Daftar Rekening
+    public void tambahKartu(Kartu k) {
+        daftarKartu.add(k);
+    }
+    // Mutator Hapus Kartu dari Daftar Rekening
+    public void hapusKartu(Kartu k) {
+        daftarKartu.remove(k);
     }
 
-    public void setSaldo(double saldo){
-        this.saldo = saldo;
-    }
-
-    public void setPemilik(Nasabah pemilik){
-        this.pemilik = pemilik;
-    }
-
-    /*Method Tambahan */
-
-    //Method untuk setor
-    public void setor(double jumlah){
+    // public procedure setor(input jumlah: double)
+    // Mutator Tambah Jumlah Saldo / Setor
+    public void setor(double jumlah) {
         saldo += jumlah;
     }
 
-    // Method untuk tarik 
-    public void tarik(double jumlah){
-        if(saldo >= jumlah){
+    // public procedure tarik(input jumlah: double)
+    // Mutator Kurang Jumlah Saldo / Tarik
+    public void tarik(double jumlah) {
+        if (saldo >= jumlah) {
             saldo -= jumlah;
         } else {
             System.out.println("Saldo tidak mencukupi");
         }
     }
 
-    /*Method Output */
+    // public procedure printRekening()
+    // Mencetak current state objek Rekening
+    public void printRekening() {
+        System.out.println("No Rekening\t: " + noRekening);
+        System.out.println("Saldo\t: " + saldo);
 
-    public void printRekening(){
-        System.out.println("No Rekening : " + noRekening);
-        System.out.println("Saldo       : " + saldo);
-
-        if(pemilik != null){
-            System.out.println("Pemilik     : " + pemilik.getNama());
-        } else {
-            System.out.println("Pemilik     : -");
-        }
+        System.out.println("Pemilik\t: " + pemilik.getNama());
     }
 }
