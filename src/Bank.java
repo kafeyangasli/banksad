@@ -1,3 +1,13 @@
+/*
+    Nama Anggota Kelompok:
+    1. Haydar Rafi’ Sultansyah			(24060124120023)
+    2. Imam Alfarezel				    (24060124120028)
+    3. Maulana Ghazzam Adil Al Faiq 	(24060124130083)
+    4. Marco Falias Pangkado			(24060124130112)
+
+    File: Bank.java
+*/
+
 import java.util.ArrayList;
 import java.util.List;
 
