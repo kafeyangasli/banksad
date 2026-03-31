@@ -159,6 +159,7 @@ public class Main {
             System.out.println();
         }
 
+        System.out.println("Total Dana Bank\t: " + bank.getTotalDana());
         System.out.println("Jumlah Nasabah\t: " + Nasabah.getCounterNasabah());
         System.out.println("Jumlah Pegawai\t: " + Pegawai.getCounterPegawai());
         System.out.println("Jumlah Rekening\t: " + Rekening.getCounterRekening());

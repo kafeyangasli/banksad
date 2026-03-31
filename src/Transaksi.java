@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -32,7 +33,7 @@ public class Transaksi {
             throw new Exception("Jenis Transaksi tidak valid!");
         }
 
-        this.idTransaksi = "TID-BSAD-" + ++counterTransaksi;
+        this.idTransaksi = "TID-BNQ-" + ++counterTransaksi;
         this.nominal = nominal;
         this.tanggal = LocalDate.now();
         this.jenis = jenis.toUpperCase();
@@ -52,7 +53,7 @@ public class Transaksi {
             throw new Exception("Jenis Transaksi tidak valid!");
         }
 
-        this.idTransaksi = "TID-BSAD-" + ++counterTransaksi + "-" + LocalDate.now();
+        this.idTransaksi = "TID-BNQ-" + ++counterTransaksi + "-" + LocalDate.now().format(DateTimeFormatter.ofPattern("ddMMYYYY"));
         this.nominal = nominal;
         this.tanggal = LocalDate.now();
         this.jenis = jenis.toUpperCase();
@@ -124,6 +125,7 @@ public class Transaksi {
     // public procedure printTransaksi()
     // Mencetak current state objek Transaksi
     public void printTransaksi(){
+        System.out.println("ID Transaksi\t: " + idTransaksi);
         System.out.println("Rek. Asal\t: " + (asal == null ? "-" : asal.getNoRekening()));
         System.out.println("Rek. Tujuan\t: " + (tujuan == null ? "-" : tujuan.getNoRekening()));
         System.out.println("Jenis Transaksi\t: " + jenis.toUpperCase());
