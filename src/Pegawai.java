@@ -4,14 +4,14 @@ import java.time.format.DateTimeFormatter;
 public abstract class Pegawai {
 
     /****** ATRIBUT ******/
-    protected String nip;
-    protected String nama;
-    protected LocalDate tglLahir;
-    protected LocalDate tmt;
-    protected double gajiPokok;
+    private String nip;
+    private String nama;
+    private LocalDate tglLahir;
+    private LocalDate tmt;
+    private double gajiPokok;
 
     /****** METHOD ******/
-    public Pegawai() {
+    protected Pegawai() {
         this.nip = "";
         this.nama = "";
         this.tglLahir = LocalDate.now();
@@ -19,7 +19,7 @@ public abstract class Pegawai {
         this.gajiPokok = 0;
     }
 
-    public Pegawai(String nip, String nama, LocalDate tglLahir, LocalDate tmt, double gajiPokok) {
+    protected Pegawai(String nip, String nama, LocalDate tglLahir, LocalDate tmt, double gajiPokok) {
         this.nip = nip;
         this.nama = nama;
         this.tglLahir = tglLahir;

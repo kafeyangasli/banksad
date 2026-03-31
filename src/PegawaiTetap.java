@@ -27,12 +27,12 @@ public class PegawaiTetap extends Pegawai {
 
     @Override
     public LocalDate hitungPensiun() {
-        return tglLahir.plusYears(BUP);
+        return getTglLahir().plusYears(BUP);
     }
 
     @Override
     public double hitungTunjangan() {
-        return 0.2 * gajiPokok;
+        return 0.2 * getGajiPokok();
     }
 
     @Override

@@ -37,7 +37,7 @@ public class PegawaiKontrak extends Pegawai {
 
     @Override
     public double hitungTunjangan() {
-        return 0.1 * gajiPokok;
+        return 0.1 * getGajiPokok();
     }
 
     @Override
