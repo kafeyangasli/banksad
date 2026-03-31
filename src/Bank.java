@@ -2,53 +2,58 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bank {
-    //atrbit
+    
+    /*---------- Atribut ----------*/
     private String namaBank;
     private String alamat;
     private List<Nasabah> daftarNasabah;
     private List<Pegawai> daftarPegawai;
 
-    //konstruktor
-    public Bank(String namaBank, String alamat){
+    /*---------- Method -----------*/
+    public Bank(String namaBank, String alamat) {
         this.namaBank = namaBank;
         this.alamat = alamat;
-        this.daftarNasabah = new ArrayList<>();
-        this.daftarPegawai = new ArrayList<>();
+        this.daftarNasabah = new ArrayList<Nasabah>();
+        this.daftarPegawai = new ArrayList<Pegawai>();
     }
 
-    //getter setter
+    // Selektor Nama Bank
     public String getNamaBank() {
         return namaBank;
     }
-
+    // Mutator Nama Bank
     public void setNamaBank(String nama) {
         this.namaBank = nama;
     }
 
+    // Selektor Alamat Bank
     public String getAlamat() {
         return alamat;
     }
-
+    // Mutator Alamat Bank
     public void setAlamat(String alamat) {
         this.alamat = alamat;
     }
 
+    // Selektor Daftar Nasabah
     public List<Nasabah> getDaftarNasabah() {
         return daftarNasabah;
     }
-
-    public List<Pegawai> getDaftarPegawai() {
-        return daftarPegawai;
-
-    }
-
-    //method laen
-    public int getJumlahNasabah(){
+    // Selektor Banyaknya Nasabah Bank
+    public int getJumlahNasabah() {
         return daftarNasabah.size();
-
+    }
+    // Method menambahkan Nasabah
+    public void tambahNasabah(Nasabah n) {
+        daftarNasabah.add(n);
+    }
+    // Method menghapus Nasabah
+    public void hapusNasabah(Nasabah n) {
+        daftarNasabah.remove(n);
     }
 
-    public double getTotalDana(){
+    // Method untuk menghitung total dana seluruh Nasabah
+    public double getTotalDana() {
         double dana;
         dana = 0;
         for (Nasabah n : daftarNasabah) {
@@ -56,18 +61,21 @@ public class Bank {
         }
         return dana;
     }
-    public void tambahNasabah(Nasabah n){
-        daftarNasabah.add(n);
-    }
 
-    public void hapusNasabah(Nasabah n){
-        daftarNasabah.remove(n);
+    // Selektor Daftar Pegawai
+    public List<Pegawai> getDaftarPegawai() {
+        return daftarPegawai;
     }
-
-    public void tambahPegawai (Pegawai p){
+    // Selektor Banyaknya Nasabah Bank
+    public int getJumlahPegawai() {
+        return daftarNasabah.size();
+    }
+    // Method menambahkan Pegawai
+    public void tambahPegawai (Pegawai p) {
         daftarPegawai.add(p);
     }
-    public void hapusPegawai(Pegawai p){
+    // Method menghapus Pegawai
+    public void hapusPegawai(Pegawai p) {
         daftarPegawai.remove(p);
     }
 

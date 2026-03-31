@@ -10,6 +10,7 @@ public abstract class Pegawai {
     protected LocalDate tglLahir;
     protected LocalDate tmt;
     protected double gajiPokok;
+    private static int counterPegawai = 0;
 
     /*---------- Method -----------*/
 
@@ -20,6 +21,7 @@ public abstract class Pegawai {
         this.tglLahir = LocalDate.now();
         this.tmt = LocalDate.now();
         this.gajiPokok = 0;
+        counterPegawai++;
     }
 
     // Konstruktor berparameter
@@ -29,6 +31,7 @@ public abstract class Pegawai {
         this.tglLahir = tglLahir;
         this.tmt = tmt;
         this.gajiPokok = gajiPokok;
+        counterPegawai++;
     }
 
     // Selektor NIP
@@ -63,6 +66,11 @@ public abstract class Pegawai {
     public void setGajiPokok(double gaji) {
         this.gajiPokok = gaji;
     }
+
+    // Selektor Banyaknya Pegawai yang Ada
+    public static int getCounterPegawai(){
+        return counterPegawai;
+    }
     
     // public function getUmur() -> int
     // Mengembalikan umur dari pegawai
@@ -76,13 +84,6 @@ public abstract class Pegawai {
         Period p = Period.between(tmt, LocalDate.now());
         return p.getYears() + " tahun " + p.getMonths() + " bulan";
     }
-
-    // public function formatTanggal(tgl: LocalDate) -> String
-    // Mengembalikan String yang telah diformat dalam bentuk d MMMM yyyy
-    public String formatTanggal(LocalDate tgl) {
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("d MMMM yyyy");
-        return tgl.format(format);
-    }
     
     // public abstract function hitungTunjangan() -> double
     public abstract double hitungTunjangan();
@@ -93,12 +94,14 @@ public abstract class Pegawai {
     // public procedure printInfo()
     // Mencetak current state objek Pegawai
     public void printInfo() {
-        System.out.println("NIP: " + nip);
-        System.out.println("Nama: " + nama);
-        System.out.println("Tanggal Lahir: " + formatTanggal(tglLahir));
-        System.out.println("TMT: " + formatTanggal(tmt));
-        System.out.println("Umur: " + getUmur() + " tahun");
-        System.out.println("Masa Kerja: " + hitungMasaKerja());
-        System.out.println("Gaji Pokok: " + gajiPokok);
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("d MMMM yyyy");
+
+        System.out.println("NIP\t\t: " + nip);
+        System.out.println("Nama\t\t: " + nama);
+        System.out.println("Tanggal Lahir\t: " + tglLahir.format(format));
+        System.out.println("TMT\t: " + tmt.format(format));
+        System.out.println("Umur\t: " + getUmur() + " tahun");
+        System.out.println("Masa Kerja\t: " + hitungMasaKerja());
+        System.out.println("Gaji Pokok\t: " + gajiPokok);
     }
 }

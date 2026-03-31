@@ -1,13 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Rekening {
 
     /*---------- Atribut ----------*/
     private String noRekening;
     private double saldo;
     private Nasabah pemilik;
-    private List<Kartu> daftarKartu;
     private static int counterRekening;
 
     /*---------- Method -----------*/
@@ -17,7 +13,6 @@ public class Rekening {
         this.noRekening = noRekening;
         this.saldo = saldo;
         this.pemilik = pemilik;
-        daftarKartu = new ArrayList<Kartu>();
         counterRekening++;
     }
 
@@ -42,15 +37,6 @@ public class Rekening {
         return counterRekening;
     }
 
-    // Mutator Tambah Kartu ke Daftar Rekening
-    public void tambahKartu(Kartu k) {
-        daftarKartu.add(k);
-    }
-    // Mutator Hapus Kartu dari Daftar Rekening
-    public void hapusKartu(Kartu k) {
-        daftarKartu.remove(k);
-    }
-
     // public procedure setor(input jumlah: double)
     // Mutator Tambah Jumlah Saldo / Setor
     public void setor(double jumlah) {
@@ -59,11 +45,11 @@ public class Rekening {
 
     // public procedure tarik(input jumlah: double)
     // Mutator Kurang Jumlah Saldo / Tarik
-    public void tarik(double jumlah) {
+    public void tarik(double jumlah) throws Exception {
         if (saldo >= jumlah) {
             saldo -= jumlah;
         } else {
-            System.out.println("Saldo tidak mencukupi");
+            throw new Exception ("Saldo tidak mencukupi!");
         }
     }
 
@@ -72,7 +58,6 @@ public class Rekening {
     public void printRekening() {
         System.out.println("No Rekening\t: " + noRekening);
         System.out.println("Saldo\t: " + saldo);
-
         System.out.println("Pemilik\t: " + pemilik.getNama());
     }
 }

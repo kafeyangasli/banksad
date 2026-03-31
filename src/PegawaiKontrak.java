@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class PegawaiKontrak extends Pegawai {
 
@@ -56,9 +57,11 @@ public class PegawaiKontrak extends Pegawai {
     // Mencetak current state objek Pegawai Kontrak
     @Override
     public void printInfo() {
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("d MMMM yyyy");
+        
         super.printInfo();
-        System.out.println("Jenis Pekerjaan: " + jenisPekerjaan);
-        System.out.println("Akhir Kontrak  : " + formatTanggal(akhirKontrak));
-        System.out.println("Tunjangan      : " + hitungTunjangan());
+        System.out.println("Jenis Pekerjaan\t: " + jenisPekerjaan);
+        System.out.println("Akhir Kontrak\t: " + akhirKontrak.format(format));
+        System.out.println("Tunjangan\t\t: " + hitungTunjangan());
     }
 }

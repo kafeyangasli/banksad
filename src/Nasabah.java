@@ -49,9 +49,9 @@ public class Nasabah {
     // Selektor Total Saldo
     public double getTotalSaldo() {
         double total;
-        total =0;
-        for (Rekening r : daftarRekening){
-            total += r.getSaldo();
+        total = 0;
+        for (Rekening rek : daftarRekening){
+            total += rek.getSaldo();
         }
         return total;
     }

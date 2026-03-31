@@ -1,25 +1,21 @@
+import java.time.LocalDate;
+
 public class Kartu {
 
     /*---------- Atribut ----------*/
     private String noKartu;
     private String jenis;
     private Rekening rekening;
+    private LocalDate masaBerlaku;
     private static int counterKartu;
 
     /*---------- Method -----------*/
-
-    // Konstruktor tanpa parameter
-    public Kartu() {
-        noKartu = "";
-        jenis = "";
-        rekening = null;
-        counterKartu++;
-    }
 
     // Konstruktor berparameter
     public Kartu(String noKartu, String jenis, Rekening rekening) {
         this.noKartu = noKartu;
         this.jenis = jenis;
+        this.masaBerlaku = LocalDate.now().plusYears(5); // Masa berlaku 5 tahun
         this.rekening = rekening;
         counterKartu++;
     }
@@ -52,34 +48,33 @@ public class Kartu {
         return counterKartu;
     }
 
-    // Method untuk cek saldo
-    public void cekSaldo() {
-        if (rekening != null) {
-            System.out.println("Saldo : " + rekening.getSaldo());
-        } else {
-            System.out.println("Saldo : 0");
-        }
+    // Selektor Masa Berlaku Kartu
+    public LocalDate getMasaBerlakuKartu() {
+        return masaBerlaku;
+    }
+    // Method untuk memperpanjang masa berlaku
+    public void perpanjangMasaBerlaku() {
+        this.masaBerlaku = LocalDate.now().plusYears(5);
     }
 
     // Method untuk tarik tunai via kartu
-    public void tarikTunai(double jumlah) {
-        if(rekening != null){
+    public void tarikTunai(double jumlah) throws Exception {
+        assert rekening != null : "Rekening kok null...";
+
+        if (LocalDate.now().isAfter(masaBerlaku)) throw new Exception("Kartu sudah melewati masa berlaku!");
+
+        try {
             rekening.tarik(jumlah);
-        } else {
-            System.out.println("Saldo anda tidak mencukupi");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
-    /*Method Output */
-
+    // public procedure printKartu()
+    // Mencetak current state objek Kartu
     public void printKartu(){
-        System.out.println("No Kartu : " + noKartu);
-        System.out.println("Jenis    : " + jenis);
-
-        if(rekening != null){
-            System.out.println("No Rekening : " + rekening.getNoRekening());
-        } else {
-            System.out.println("No Rekening : -");
-        }
+        System.out.println("No Kartu\t\t: " + noKartu);
+        System.out.println("Jenis\t\t: " + jenis);
+        System.out.println("Rekening Terhubung\t: " + rekening.getNoRekening());
     }
 }

@@ -77,6 +77,7 @@ public class Transaksi {
     public Rekening getRekeningTujuan() {
         return tujuan;
     }
+    
     // Selektor Status Transaksi
     public boolean getStatusTransaksi() {
         return statusTransaksi;

@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class PegawaiTetap extends Pegawai {
 
@@ -45,9 +46,11 @@ public class PegawaiTetap extends Pegawai {
     // Mencetak current state objek Pegawai Tetap
     @Override
     public void printInfo() {
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("d MMMM yyyy");
+        
         super.printInfo();
-        System.out.println("Jabatan        : " + jabatan);
-        System.out.println("Tanggal Pensiun: " + formatTanggal(hitungPensiun()));
-        System.out.println("Tunjangan      : " + hitungTunjangan());
+        System.out.println("Jabatan\t\t: " + jabatan);
+        System.out.println("Tanggal Pensiun\t: " + hitungPensiun().format(format));
+        System.out.println("Tunjangan\t: " + hitungTunjangan());
     }
 }
